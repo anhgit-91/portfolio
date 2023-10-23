@@ -1,0 +1,21 @@
+.navbar {
+  height: 100px;
+}
+.navbar .wrapper {
+  max-width: 1366px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .wrapper span {
+  font-weight: bold;
+}
+.navbar .wrapper .social {
+  display: flex;
+  gap: 20px;
+}
+.navbar .wrapper .social .svg-inline--fa {
+  font-size: 3rem;
+}/*# sourceMappingURL=Navbar.css.map */
