@@ -1,0 +1,14 @@
+.contact {
+  height: 100%;
+  max-width: 1366px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+.contact .text-container {
+  flex: 1;
+}
+.contact .form-container {
+  flex: 1;
+}/*# sourceMappingURL=contact.css.map */

@@ -18,4 +18,9 @@
 }
 .navbar .wrapper .social .svg-inline--fa {
   font-size: 3rem;
-}/*# sourceMappingURL=Navbar.css.map */
+  color: #9933ff;
+  transition: color 0.5s;
+}
+.navbar .wrapper .social .svg-inline--fa:hover {
+  color: white;
+}/*# sourceMappingURL=navbar.css.map */

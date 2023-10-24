@@ -1,3 +1,6 @@
+@import "../../scss/variables";
+
+
 .navbar {
     height: 100px;
 
@@ -8,7 +11,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        
 
         span {
             font-weight: bold;
@@ -17,13 +19,15 @@
         .social {
             display: flex;
             gap: 20px;
-
+           
             .svg-inline--fa {
                 font-size: 3rem;
+                color: $primary-color;
+                transition: color .5s ;
+                &:hover {
+                    color: white;
+                }
             }
         }
-
     }
-
-
 }
