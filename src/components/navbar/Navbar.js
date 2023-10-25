@@ -7,15 +7,13 @@ import Sidebar from "../sidebar/Sidebar";
 const Navbar = () => {
     return (
         <nav className="navbar">
-            <Sidebar />
             <div className="wrapper">
-                <span>Andy Dev</span>
+                <span>
+                    <Sidebar />
+                </span>
                 <div className="social">
                     <a href="https://github.com">
                         <FontAwesomeIcon icon={faGithub} />
-                    </a>
-                    <a href="https://github.com">
-                        <FontAwesomeIcon icon={faLinkedin} />
                     </a>
                 </div>
             </div>

@@ -7,10 +7,57 @@
     gap: 50px;
 
     .text-container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
         flex: 1;
+
+        h1 {
+            font-size: 90px;
+            line-height: 88px;
+        }
+        h2 {
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
     }
 
     .form-container {
         flex: 1;
+        position: relative;
+        .phoneSvg {
+            stroke: orange;
+            position: absolute;
+            margin: auto;
+            z-index: -1;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            input,
+            textarea {
+                padding: 20px;
+                background-color: transparent;
+                border: 1px solid white;
+                color: white;
+                border-radius: 5px;
+                font-size: 14px;
+            }
+
+            button {
+                padding: 20px;
+                background-color: orange;
+                cursor: pointer;
+                font-size: 20px;
+                font-weight: bold;
+                transition: background-color 0.5s ease;
+                &:hover {
+                    background-color: #d9d9d9;
+                    color: orange;
+                }
+            }
+        }
     }
 }

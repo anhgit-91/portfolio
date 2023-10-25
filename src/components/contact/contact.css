@@ -7,8 +7,52 @@
   gap: 50px;
 }
 .contact .text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   flex: 1;
+}
+.contact .text-container h1 {
+  font-size: 90px;
+  line-height: 88px;
+}
+.contact .text-container h2 {
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 .contact .form-container {
   flex: 1;
+  position: relative;
+}
+.contact .form-container .phoneSvg {
+  stroke: orange;
+  position: absolute;
+  margin: auto;
+  z-index: -1;
+}
+.contact .form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contact .form-container form input,
+.contact .form-container form textarea {
+  padding: 20px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.contact .form-container form button {
+  padding: 20px;
+  background-color: orange;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  transition: background-color 0.5s ease;
+}
+.contact .form-container form button:hover {
+  background-color: #d9d9d9;
+  color: orange;
 }/*# sourceMappingURL=contact.css.map */

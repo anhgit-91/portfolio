@@ -2,11 +2,14 @@ import Hero from "./components/hero/Hero";
 import Navbar from "./components/navbar/Navbar";
 import Projects from "./components/projects/Projects";
 import Contact from "./components/contact/Contact";
-import "./scss/App.scss";
+import "./App.scss";
+import Cursor from "./components/cursor/Cursor";
 
 function App() {
     return (
         <div className="App">
+            <Cursor />
+
             <section id="Homepage">
                 <Navbar />
                 <Hero />

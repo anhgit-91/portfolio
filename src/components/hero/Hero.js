@@ -43,6 +43,7 @@ const Hero = () => {
     return (
         <div className="hero">
             <div className="wrapper">
+                {/* text container */}
                 <motion.div
                     className="text-container"
                     variants={textVariants}
@@ -68,7 +69,12 @@ const Hero = () => {
                         alt="scroll"
                     />
                 </motion.div>
+                {/* Image container */}
+                <div className="img-container">
+                    <img src="/male.png" alt="avatar" />
+                </div>
             </div>
+            {/* Sliding text */}
             <motion.div
                 className="slidingText-container"
                 variants={sliderVariants}
@@ -77,9 +83,6 @@ const Hero = () => {
             >
                 HTML CSS JavaScript React
             </motion.div>
-            <div className="img-container">
-                <img src="/hero.png" alt="avatar" />
-            </div>
         </div>
     );
 };

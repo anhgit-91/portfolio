@@ -1,3 +1,46 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "DM Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input,
+button,
+textarea,
+select {
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1;
+  background-color: #0c0c1d;
+  color: #d3d3d3;
+  font-weight: 400;
+}
+
+section {
+  height: 100vh;
+  width: 100vw;
+  scroll-snap-align: center;
+}
+
 .hero {
   height: calc(100vh - 100px);
   background: linear-gradient(180deg, #0c0c1d, #111132);
@@ -8,6 +51,8 @@
   max-width: 1366px;
   height: 100%;
   margin: auto;
+  display: flex;
+  justify-content: space-between;
 }
 .hero .wrapper .text-container {
   width: 50%;
@@ -16,14 +61,29 @@
   flex-direction: column;
   justify-content: center;
   gap: 40px;
+  z-index: 2;
+}
+@media (max-width: 738px) {
+  .hero .wrapper .text-container {
+    width: 100%;
+    height: 50%;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+  }
 }
 .hero .wrapper .text-container h2 {
   font-size: 30px;
   color: #9933ff;
-  letter-spacing: 10px;
+  letter-spacing: 5px;
 }
 .hero .wrapper .text-container h1 {
   font-size: 88px;
+}
+@media (max-width: 738px) {
+  .hero .wrapper .text-container h1 {
+    font-size: 36px;
+  }
 }
 .hero .wrapper .text-container .buttons button {
   padding: 20px;
@@ -44,17 +104,29 @@
   width: 50px;
   align-self: flex-end;
 }
-.hero .img-container {
+@media (max-width: 738px) {
+  .hero .wrapper .text-container img {
+    align-self: center;
+  }
+}
+.hero .wrapper .img-container {
+  width: 100%;
   height: 100%;
   position: absolute;
-  top: 0;
-  right: 0;
+  right: -350px;
+  z-index: 1;
 }
-.hero .img-container img {
-  height: 100%;
+@media (max-width: 738px) {
+  .hero .wrapper .img-container {
+    height: 50%;
+    width: 100%;
+  }
+}
+.hero .wrapper .img-container img {
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .hero .slidingText-container {
   width: 80%;
