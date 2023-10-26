@@ -2,6 +2,9 @@ $text-color: #d3d3d3;
 $second-text-color: #333;
 $primary-color: #9933ff;
 
+$text-font: "Montserrat", sans-serif;
+$heading-font: "Bebas Neue", sans-serif;
+
 *,
 *::before,
 *::after {
@@ -11,7 +14,6 @@ $primary-color: #9933ff;
 * {
     margin: 0;
     padding: 0;
-    font-family: "DM Sans", sans-serif;
 }
 
 a {
@@ -32,6 +34,7 @@ html {
 }
 
 body {
+    font-family: $text-font;
     font-size: 16px;
     line-height: 1;
     background-color: #0c0c1d;
@@ -48,13 +51,19 @@ section {
 }
 
 @mixin mobile {
-    @media (max-width: 738px) {
+    @media screen and (max-width: 767.98px) {
         @content;
     }
 }
 
 @mixin tablet {
-    @media (max-width: 1024px) {
+    @media screen and (max-width: 1023.98px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: 1024px) {
         @content;
     }
 }

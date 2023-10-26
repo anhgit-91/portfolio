@@ -29,14 +29,16 @@
             align-items: center;
             gap: 30px;
             @include mobile {
-                height: 50%;
+                height: 70%;
+                gap: 50px;
             }
 
             a {
+                font-family: $heading-font;
                 font-size: 40px;
                 color: black;
                 @include mobile {
-                    font-size: 20px;
+                    font-size: 30px;
                 }
 
                 &:hover {

@@ -1,3 +1,5 @@
+@import "../../App.scss";
+
 .contact {
     height: 100%;
     max-width: 1366px;
@@ -5,31 +7,55 @@
     display: flex;
     align-items: center;
     gap: 50px;
+    overflow: hidden;
+
+    @include mobile {
+        width: 100%;
+        padding: 10px;
+        flex-direction: column;
+    }
 
     .text-container {
         display: flex;
         flex-direction: column;
         gap: 40px;
         flex: 1;
+        @include mobile {
+            gap: 20px;
+            text-align: center;
+            align-items: center;
+            margin-top: 70px;
+        }
 
         h1 {
+            font-family: $heading-font;
             font-size: 90px;
             line-height: 88px;
+            @include mobile {
+                font-size: 42px;
+                line-height: 1.5;
+            }
         }
         h2 {
             margin-bottom: 10px;
-            font-weight: 600;
         }
     }
 
     .form-container {
         flex: 1;
         position: relative;
+        @include mobile {
+            padding: 30px;
+            width: 100%;
+        }
         .phoneSvg {
-            stroke: orange;
+            stroke: $primary-color;
             position: absolute;
             margin: auto;
             z-index: -1;
+            @include mobile {
+                display: none;
+            }
         }
         form {
             display: flex;
@@ -42,20 +68,30 @@
                 background-color: transparent;
                 border: 1px solid white;
                 color: white;
-                border-radius: 5px;
+                border-radius: 10px;
                 font-size: 14px;
+                @include mobile {
+                    padding: 10px;
+                }
             }
 
             button {
                 padding: 20px;
-                background-color: orange;
+                color: white;
+                border: none;
+                background-color: $primary-color;
+                border-radius: 10px;
                 cursor: pointer;
                 font-size: 20px;
-                font-weight: bold;
+                font-weight: 600;
                 transition: background-color 0.5s ease;
-                &:hover {
-                    background-color: #d9d9d9;
-                    color: orange;
+                @include mobile {
+                    padding: 10px;
+                }
+                &:hover,
+                &:active {
+                    background-color: white;
+                    color: $primary-color;
                 }
             }
         }

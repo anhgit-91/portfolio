@@ -7,7 +7,6 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "DM Sans", sans-serif;
 }
 
 a {
@@ -28,6 +27,7 @@ html {
 }
 
 body {
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 1;
   background-color: #0c0c1d;
@@ -58,7 +58,7 @@ section {
   width: 400px;
   background-color: white;
 }
-@media (max-width: 738px) {
+@media screen and (max-width: 767.98px) {
   .sidebar .bg {
     width: 200px;
   }
@@ -73,18 +73,20 @@ section {
   align-items: center;
   gap: 30px;
 }
-@media (max-width: 738px) {
+@media screen and (max-width: 767.98px) {
   .sidebar .bg .links {
-    height: 50%;
+    height: 70%;
+    gap: 50px;
   }
 }
 .sidebar .bg .links a {
+  font-family: "Bebas Neue", sans-serif;
   font-size: 40px;
   color: black;
 }
-@media (max-width: 738px) {
+@media screen and (max-width: 767.98px) {
   .sidebar .bg .links a {
-    font-size: 20px;
+    font-size: 30px;
   }
 }
 .sidebar .bg .links a:hover {

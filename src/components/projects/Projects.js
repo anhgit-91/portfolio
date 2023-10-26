@@ -1,52 +1,107 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import React, { useRef, useEffect } from "react";
+import {
+    motion,
+    useScroll,
+    useSpring,
+    useInView,
+    useAnimation,
+} from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import "./projects.scss";
+import items from "./data";
 
-const items = [
-    {
-        id: 1,
-        title: "API Project",
-        img: "https://images.pexels.com/photos/1323550/pexels-photo-1323550.jpeg?auto=compress&cs=tinysrgb&w=600",
-        desc: "Quaerat voluptate mollitia illo dolorem accusantium eligendi corrupti quis aperiam incidunt magni nam ipsam,",
+//Text variants
+
+let varContainer = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+            delayChildren: 0.3,
+            staggerChildren: 0.2,
+            // duration: 0.5,
+            // delay: 0.25,
+        },
     },
-    {
-        id: 2,
-        title: "React Project",
-        img: "https://images.pexels.com/photos/1387037/pexels-photo-1387037.jpeg?auto=compress&cs=tinysrgb&w=600",
-        desc: "Quaerat voluptate mollitia illo dolorem accusantium eligendi corrupti quis aperiam incidunt magni nam ipsam,",
+};
+
+let varImg = {
+    hidden: { y: 300, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 1,
+            staggerChildren: 0.1,
+        },
     },
-    {
-        id: 3,
-        title: "Boostrap Project",
-        img: "https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&w=600",
-        desc: "Quaerat voluptate mollitia illo dolorem accusantium eligendi corrupti quis aperiam incidunt magni nam ipsam,",
+};
+
+let varText = {
+    hidden: { y: -300, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 0.8,
+            staggerChildren: 0.1,
+        },
     },
-];
+};
 
 const Single = ({ item }) => {
-    const ref = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        // offset: ["start start", "end start"],
-    });
-    const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+    const control = useAnimation();
+    const imgRef = useRef();
+    const inView = useInView(imgRef);
+    const isMobile = window.innerWidth < 768; //Add the width you want to check for here (now 768px)
+    if (isMobile) {
+        varContainer = {};
+        varImg = {};
+        varText = {};
+    }
+    useEffect(() => {
+        if (inView) {
+            control.start("visible");
+        } else {
+            control.start("hidden");
+        }
+    }, [control, inView]);
 
     return (
         <section id="Projects">
             <div className="container">
-                <div className="wrapper">
-                    <div className="img-container" ref={ref}>
-                        <img src={item.img} alt="project" />
-                    </div>
-                    <motion.div className="text-container" style={{ y }}>
+                <motion.div
+                    className="wrapper"
+                    ref={imgRef}
+                    variants={varContainer}
+                    initial="hidden"
+                    animate={control}
+                >
+                    <motion.div className="img-container">
+                        <motion.img
+                            variants={varImg}
+                            src={item.img}
+                            alt="project"
+                        />
+                    </motion.div>
+                    <motion.div className="text-container" variants={varText}>
                         <h2>{item.title}</h2>
                         <p>{item.desc}</p>
-                        <div className="buttons">
-                            <button>Github</button>
-                            <button>Live demo</button>
+                        <div className="links">
+                            <a href="https://github.com">
+                                <FontAwesomeIcon icon={faGithub} />
+                                Github
+                            </a>
+                            <a href="https://github.com">
+                                <FontAwesomeIcon icon={faUpRightFromSquare} />
+                                Live view
+                            </a>
                         </div>
                     </motion.div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
@@ -66,7 +121,7 @@ const Projects = () => {
     return (
         <div className="projects" ref={ref}>
             <div className="progress">
-                <h1>Projects Works</h1>
+                <h1>Projects</h1>
                 <motion.div
                     style={{ scaleX }}
                     className="progress-bar"

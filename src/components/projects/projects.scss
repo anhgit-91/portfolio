@@ -1,3 +1,5 @@
+@import "../../App.scss";
+
 .projects {
     position: relative;
     .progress {
@@ -6,10 +8,17 @@
         left: 0;
         padding-top: 50px;
         text-align: center;
-        color: orange;
+        color: $primary-color;
         font-size: 36px;
 
+        @include mobile {
+            z-index: -1;
+            font-size: 20px;
+            padding-top: calc(100vh - 80px);
+        }
+
         .progress-bar {
+            margin-top: 10px;
             height: 10px;
             background-color: white;
         }
@@ -23,6 +32,7 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+
     .wrapper {
         max-width: 1366px;
         height: 100%;
@@ -32,37 +42,57 @@
         justify-content: center;
         gap: 50px;
 
+        @include mobile {
+            flex-direction: column;
+        }
         .img-container {
             flex: 1;
-            height: 50%;
+            height: 40%;
+            @include mobile {
+                width: 100%;
+                max-height: 300px;
+            }
 
             img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                @include mobile {
+                    object-fit: cover;
+                }
             }
         }
-        
 
         .text-container {
             flex: 1;
             display: flex;
             flex-direction: column;
             gap: 30px;
+            @include mobile {
+                transform: none !important;
+                padding: 10px;
+                align-items: center;
+                text-align: center;
+            }
 
             h2 {
-                font-size: 72px;
+                font-size: 36px;
             }
 
             p {
                 font-size: 20px;
                 color: #d9d9d9;
+                @include mobile {
+                    font-size: 16px;
+                    line-height: 1.5;
+                }
             }
 
-            .buttons {
-                button {
-                    background-color: orange;
-                    border: none;
+            .links {
+                a {
+                    color: white;
+                    background-color: transparent;
+                    border: 1px solid white;
                     border-radius: 10px;
                     padding: 10px;
                     width: 200px;
@@ -70,13 +100,20 @@
                     font-size: 18px;
                     font-weight: 600;
                     cursor: pointer;
-                    transition: background-color .5s ease;
-                    &:hover {
-                        background-color: #d9d9d9;
-                        color: orange;
+                    transition: background-color 0.5s ease;
+                    .svg-inline--fa {
+                        margin-right: 10px;
+                    }
+                    &:nth-child(2) {
+                        border: none;
+                        background-color: $primary-color;
+                    }
+                    &:hover,
+                    &:active {
+                        background-color: white;
+                        color: $primary-color;
                     }
                 }
-
             }
         }
     }
