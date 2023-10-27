@@ -56,8 +56,9 @@ const Single = ({ item }) => {
     const control = useAnimation();
     const imgRef = useRef();
     const inView = useInView(imgRef);
+    const isTablet = window.innerWidth < 1024;
     const isMobile = window.innerWidth < 768; //Add the width you want to check for here (now 768px)
-    if (isMobile) {
+    if (isMobile || isTablet) {
         varContainer = {};
         varImg = {};
         varText = {};

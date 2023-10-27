@@ -35,9 +35,10 @@ const Contact = () => {
     let formRef = useRef();
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
+    const isTablet = window.innerWidth < 1024;
     // mobile check
     const isMobile = window.innerWidth < 768; //Add the width you want to check for here (now 768px)
-    if (isMobile) {
+    if (isMobile || isTablet) {
         variantsForm = {};
         variants = {};
     }

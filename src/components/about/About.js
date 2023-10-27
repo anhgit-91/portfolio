@@ -1,23 +1,22 @@
-import { motion } from "framer-motion";
+import { animate, motion } from "framer-motion";
 import "./about.scss";
 import items from "./data";
 
 let container = {
-    initial: {
-        opacity: 0,
-    },
-    animate: {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
         opacity: 1,
+        scale: 1,
         transition: {
-            duration: 1,
-            delay: 0.4,
+            delayChildren: 0.3,
+            staggerChildren: 0.3,
         },
     },
 };
 
 const About = () => {
-    // mobile check
-    const isMobile = window.innerWidth < 768; //Add the width you want to check for here (now 768px)
+    //mobile check
+    let isMobile = window.innerWidth < 768; //Add the width you want to check for here (now 768px)
     if (isMobile) {
         container = {};
     }
@@ -36,21 +35,22 @@ const About = () => {
                     challenges and collaborate effectively.
                 </p>
                 <h2>Skills and Tools</h2>
-                <div
-                    className="skill"
-                    variants={container}
-                    initial="initial"
-                    whileInView="animate"
-                >
+                <motion.div className="skill">
                     {items.map((item) => {
                         return (
-                            <motion.figure key={item.id}>
+                            <motion.figure
+                                key={item.id}
+                                variants={container}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                            >
                                 <img src={item.img} alt={item.title}></img>
                                 <figcaption>{item.title}</figcaption>
                             </motion.figure>
                         );
                     })}
-                </div>
+                </motion.div>
                 <div className="learning">
                     <h2>
                         Currently working on:{" "}

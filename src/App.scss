@@ -57,7 +57,7 @@ section {
 }
 
 @mixin tablet {
-    @media screen and (max-width: 1023.98px) {
+    @media screen and (max-width: 1023.98px) and (min-width: 768px) {
         @content;
     }
 }
