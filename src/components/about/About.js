@@ -53,7 +53,7 @@ const About = () => {
                 </motion.div>
                 <div className="learning">
                     <h2>
-                        Currently working on:{" "}
+                        Currently working on:
                         <span>NodeJS, MongoDB, ExpressJS.</span>
                     </h2>
                 </div>

@@ -13,7 +13,7 @@ const Navbar = () => {
                 </a>
 
                 <div className="social">
-                    <a href="https://github.com">
+                    <a href="https://github.com/anhgit-91">
                         <FontAwesomeIcon icon={faGithub} />
                     </a>
                 </div>
