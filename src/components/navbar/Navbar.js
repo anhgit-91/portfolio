@@ -9,7 +9,7 @@ const Navbar = () => {
             <Sidebar />
             <div className="wrapper">
                 <a href="#Homepage">
-                    <img src="/images/logo.png" alt="logo" />
+                    <img src="./images/logo.png" alt="logo" />
                 </a>
 
                 <div className="social">

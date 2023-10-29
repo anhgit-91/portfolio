@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import {
     motion,
     useScroll,
@@ -8,7 +8,11 @@ import {
 } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import {
+    faUpRightFromSquare,
+    faChevronRight,
+    faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
 import "./projects.scss";
 import items from "./data";
 
@@ -54,6 +58,7 @@ let varText = {
 
 const Single = ({ item }) => {
     const control = useAnimation();
+    const [slide, setSlide] = useState(0);
     const imgRef = useRef();
     const inView = useInView(imgRef);
     const isTablet = window.innerWidth < 1024;
@@ -71,6 +76,15 @@ const Single = ({ item }) => {
         }
     }, [control, inView]);
 
+    //slide effect
+    const nextSlide = () => {
+        setSlide(slide === item.img.length - 1 ? 0 : slide + 1);
+    };
+
+    //slide effect
+    const prevSlide = () => {
+        setSlide(slide === 0 ? item.img.length - 1 : slide - 1);
+    };
     return (
         <section id="Projects">
             <div className="container">
@@ -82,11 +96,56 @@ const Single = ({ item }) => {
                     animate={control}
                 >
                     <motion.div className="img-container">
-                        <motion.img
+                        {/* <motion.img
                             variants={varImg}
                             src={item.img}
                             alt="project"
-                        />
+                        /> */}
+
+                        <div className="carousel" key={item.id}>
+                            <FontAwesomeIcon
+                                icon={faChevronLeft}
+                                className="arrow arrow-left"
+                                onClick={prevSlide}
+                            />
+                            {Array.isArray(item.img) ? (
+                                item.img.map((imgUrl, imgIdx) => (
+                                    <img
+                                        className={
+                                            slide === imgIdx
+                                                ? "slide"
+                                                : "slide slide-hidden"
+                                        }
+                                        src={imgUrl}
+                                        alt={item.title}
+                                        key={imgIdx}
+                                    />
+                                ))
+                            ) : (
+                                <img src={item.img} alt={item.title} />
+                            )}
+                            <FontAwesomeIcon
+                                icon={faChevronRight}
+                                className="arrow arrow-right"
+                                onClick={nextSlide}
+                            />
+                            {/* indicator */}
+                            <span className="indicators">
+                                {Array.isArray(item.img)
+                                    ? item.img.map((_, idx) => (
+                                          <button
+                                              key={idx}
+                                              onClick={null}
+                                              className={
+                                                  slide === idx
+                                                      ? "indicator"
+                                                      : "indicator indicator-inactive"
+                                              }
+                                          ></button>
+                                      ))
+                                    : null}
+                            </span>
+                        </div>
                     </motion.div>
                     <motion.div className="text-container" variants={varText}>
                         <h2>{item.title}</h2>

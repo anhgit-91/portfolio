@@ -65,13 +65,13 @@ const Hero = () => {
                     <motion.img
                         variants={textVariants}
                         animate="scrollButton"
-                        src="/images/scroll.png"
+                        src="./images/scroll.png"
                         alt="scroll"
                     />
                 </motion.div>
                 {/* Image container */}
                 <div className="img-container">
-                    <img src="/images/male.png" alt="avatar" />
+                    <img src="./images/male.png" alt="avatar" />
                 </div>
             </div>
             {/* Sliding text */}
